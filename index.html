@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>خریدار | خانه</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>خریدار</h1>
+    <nav>
+      <a href="post.html">+ ثبت آگهی</a>
+      <a href="register.html">ورود / ثبت‌نام</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>دسته‌بندی‌ها</h2>
+    <ul id="categories">
+      <li data-cat="وسایل نقلیه">وسایل نقلیه</li>
+      <li data-cat="وسایل خانه">وسایل خانه</li>
+      <li data-cat="وسایل آشپزخانه">وسایل آشپزخانه</li>
+      <li data-cat="لوازم الکترونیکی">لوازم الکترونیکی</li>
+      <li data-cat="املاک">املاک</li>
+      <li data-cat="حیوانات">حیوانات</li>
+      <li data-cat="کالا لباس">کالا و لباس</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>آخرین آگهی‌ها</h2>
+    <div id="ads"></div>
+  </section>
+
+  <script src="ads.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>ثبت آگهی | خریدار</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ثبت آگهی جدید</h1>
+  </header>
+
+  <section>
+    <form id="postForm">
+      <label>عنوان آگهی:</label><br>
+      <input type="text" id="title" required><br><br>
+
+      <label>توضیحات:</label><br>
+      <textarea id="description" required></textarea><br><br>
+
+      <label>قیمت (افغانی):</label><br>
+      <input type="number" id="price" required><br><br>
+
+      <label>دسته‌بندی:</label><br>
+      <select id="category" required>
+        <option value="">انتخاب کنید</option>
+        <option value="وسایل نقلیه">وسایل نقلیه</option>
+        <option value="وسایل خانه">وسایل خانه</option>
+        <option value="وسایل آشپزخانه">وسایل آشپزخانه</option>
+        <option value="لوازم الکترونیکی">لوازم الکترونیکی</option>
+        <option value="املاک">املاک</option>
+        <option value="حیوانات">حیوانات</option>
+        <option value="کالا و لباس">کالا و لباس</option>
+      </select><br><br>
+
+      <label>موقعیت (شهر/منطقه):</label><br>
+      <input type="text" id="location" required><br><br>
+
+      <label>آپلود عکس:</label><br>
+      <input type="file" id="image" accept="image/*" required><br><br>
+
+      <button type="submit">ثبت آگهی</button>
+    </form>
+  </section>
+
+  <script src="post.js"></script>
+</body>
+</html>
+<section>
+  <h2>جستجو و دسته‌بندی</h2>
+
+  <input type="text" id="searchBox" placeholder="جستجو در عنوان آگهی‌ها..." style="width:100%; padding:8px; margin-bottom:10px;">
+
+  <ul id="categories">
+    <li data-cat="همه">همه</li>
+    <li data-cat="وسایل نقلیه">وسایل نقلیه</li>
+    <li data-cat="وسایل خانه">وسایل خانه</li>
+    <li data-cat="وسایل آشپزخانه">وسایل آشپزخانه</li>
+    <li data-cat="لوازم الکترونیکی">لوازم الکترونیکی</li>
+    <li data-cat="املاک">املاک</li>
+    <li data-cat="حیوانات">حیوانات</li>
+    <li data-cat="کالا و لباس">کالا و لباس</li>
+  </ul>
+</section>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>پیام‌ها | خریدار</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #chatBox {
+      max-height: 400px;
+      overflow-y: auto;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    .sent {
+      background-color: #d1f5d3;
+      text-align: right;
+    }
+
+    .received {
+      background-color: #f1f1f1;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>چت با فروشنده</h1>
+  </header>
+
+  <section>
+    <div id="chatBox"></div>
+
+    <form id="chatForm">
+      <input type="text" id="messageInput" placeholder="پیام خود را بنویسید..." required style="width:80%;">
+      <button type="submit">ارسال</button>
+    </form>
+  </section>
+
+  <script src="chat.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>ورود | خریدار</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ورود به حساب</h1>
+  </header>
+
+  <section>
+    <form id="loginForm">
+      <label>شماره تلفن:</label><br>
+      <input type="text" id="phone" placeholder="مثلاً ۰۷۹۱۲۳۴۵۶۷" required><br><br>
+
+      <label>رمز عبور:</label><br>
+      <input type="password" id="password" required><br><br>
+
+      <button type="submit">ورود</button>
+    </form>
+
+    <p>حساب ندارید؟ <a href="register.html">ثبت‌نام کنید</a></p>
+  </section>
+
+  <script src="login.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>پروفایل من | خریدار</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .ad-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background: #fff;
+    }
+    .ad-card img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>پروفایل من</h1>
+    <button onclick="logout()">خروج از حساب</button>
+  </header>
+
+  <section id="myAdsSection">
+    <h2>آگهی‌های من</h2>
+    <div id="myAds"></div>
+  </section>
+
+  <script src="profile.js"></script>
+</body>
+</html>
+<a href="profile.html">پروفایل من</a>
+<button onclick="editAd(${index})">ویرایش</button>
+<button onclick="deleteAd(${index})">حذف</button>
+<div id="editFormContainer" style="display:none; margin-top:20px;">
+  <h3>ویرایش آگهی</h3>
+  <form id="editAdForm">
+    <input type="text" id="editTitle" placeholder="عنوان"><br><br>
+    <input type="text" id="editPrice" placeholder="قیمت"><br><br>
+    <input type="text" id="editLocation" placeholder="موقعیت"><br><br>
+    <input type="text" id="editImage" placeholder="لینک عکس"><br><br>
+    <textarea id="editDescription" placeholder="توضیحات"></textarea><br><br>
+    <select id="editCategory">
+      <option>وسایل نقلیه</option>
+      <option>وسایل خانه</option>
+      <option>وسایل آشپزخانه</option>
+      <option>لوازم الکترونیکی</option>
+      <option>املاک</option>
+      <option>حیوانات</option>
+      <option>کالا و لباس</option>
+    </select><br><br>
+    <button type="submit">ثبت تغییرات</button>
+  </form>
+</div>
+<label>عکس جنس:</label><br>
+<input type="file" id="imageInput" accept="image/*" required><br><br>
+<section>
+  <input type="text" id="searchInput" placeholder="جستجو در آگهی‌ها..." />
+  <select id="filterCategory">
+    <option value="">همه دسته‌ها</option>
+    <option>وسایل نقلیه</option>
+    <option>وسایل خانه</option>
+    <option>وسایل آشپزخانه</option>
+    <option>لوازم الکترونیکی</option>
+    <option>املاک</option>
+    <option>حیوانات</option>
+    <option>کالا و لباس</option>
+  </select>
+</section>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>گفت‌وگو</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #messages {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background: #f9f9f9;
+      margin-bottom: 10px;
+    }
+    .msg {
+      margin-bottom: 8px;
+    }
+    .msg.me {
+      text-align: right;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2>گفت‌وگو با فروشنده</h2>
+  <div id="messages"></div>
+  <form id="msgForm">
+    <input type="text" id="msgInput" placeholder="پیام خود را بنویسید..." required />
+    <button type="submit">ارسال</button>
+  </form>
+
+  <script src="chat.js"></script>
+</body>
+</html>
+<h3>پیام‌های دریافتی</h3>
+<div id="inbox"></div>
+<a href="#inbox">
+  پیام‌ها
+  <span id="notifBadge" style="display:none; color: white; background: red; padding: 2px 6px; border-radius: 50%;">0</span>
+</a>

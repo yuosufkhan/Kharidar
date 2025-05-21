@@ -1,0 +1,86 @@
+let ads = [];
+
+// بارگذاری آگهی‌ها هنگام باز شدن صفحه
+window.onload = function () {
+  const savedAds = localStorage.getItem("ads");
+  if (savedAds) {
+    ads = JSON.parse(savedAds);
+    showAds();
+  }
+};
+
+function addAd() {
+  const title = document.getElementById("title").value.trim();
+  const price = document.getElementById("price").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const category = document.getElementById("category").value;
+  const imageInput = document.getElementById("image");
+
+  if (!title || !price || !phone || imageInput.files.length === 0) {
+    alert("لطفاً تمام فیلدها را پر کنید و عکس را انتخاب کنید.");
+    return;
+  }
+
+  if (!phone.startsWith("93") || phone.length < 10) {
+    alert("شماره تماس باید با 93 شروع شود و معتبر باشد.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const imageURL = event.target.result;
+    ads.push({ title, price, phone, category, imageURL });
+    localStorage.setItem("ads", JSON.stringify(ads));
+    showAds();
+    clearForm();
+  };
+  reader.readAsDataURL(imageInput.files[0]);
+}
+
+function showAds() {
+  const list = document.getElementById("ads-list");
+  const search = document.getElementById("search").value.toLowerCase();
+  list.innerHTML = '';
+
+  ads
+    .filter(ad => ad.title.toLowerCase().includes(search))
+    .forEach((ad, index) => {
+      list.innerHTML += `
+        <div class="ad">
+          <strong>${ad.title}</strong><br>
+          قیمت: ${ad.price} افغانی<br>
+          تماس: <a href="tel:0${ad.phone}">0${ad.phone}</a><br>
+          دسته‌بندی: ${ad.category}<br>
+          <img src="${ad.imageURL}" width="200"><br>
+          <button onclick="deleteAd(${index})">حذف</button>
+          <button onclick="editAd(${index})">ویرایش</button>
+        </div>
+      `;
+    });
+}
+
+function deleteAd(index) {
+  if (confirm("آیا مطمئن هستید که می‌خواهید این آگهی را حذف کنید؟")) {
+    ads.splice(index, 1);
+    localStorage.setItem("ads", JSON.stringify(ads));
+    showAds();
+  }
+}
+
+function editAd(index) {
+  const ad = ads[index];
+  document.getElementById("title").value = ad.title;
+  document.getElementById("price").value = ad.price;
+  document.getElementById("phone").value = ad.phone;
+  document.getElementById("category").value = ad.category;
+  ads.splice(index, 1);
+  localStorage.setItem("ads", JSON.stringify(ads));
+  showAds();
+}
+
+function clearForm() {
+  document.getElementById("title").value = '';
+  document.getElementById("price").value = '';
+  document.getElementById("phone").value = '';
+  document.getElementById("image").value = '';
+}
